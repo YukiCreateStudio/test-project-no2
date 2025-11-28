@@ -39,7 +39,6 @@ import { TOP_NEWS_LIST_LIMIT } from "./_constans";
 
 export default async function Home() {
   const data = await getNewsList({ limit: TOP_NEWS_LIST_LIMIT });
-  console.log(data);
   return (
     <>
       <section className={styles.top}>

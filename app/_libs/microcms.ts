@@ -1,4 +1,3 @@
-import { error } from "console";
 import { createClient } from "microcms-js-sdk";
 import {
   MicroCMSImage,
@@ -70,4 +69,17 @@ export const getNewsDetail = async (
     queries,
   });
   return listData;
+};
+
+//Categoryの存在ﾁｪｯｸ//
+export const getCategoryDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  const detailData = client.getListDetail<Category>({
+    endpoint: "categories",
+    contentId,
+    queries,
+  });
+  return detailData;
 };

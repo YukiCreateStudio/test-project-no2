@@ -8,5 +8,4 @@ dayjs.locale(ja);
 export const formatDate = (date: string) => {
   return dayjs(date).format("YYYY年MM月DD日 HH時mm分");
 };
-console.log("formattedDate", formatDate);
 // 日付文字列
