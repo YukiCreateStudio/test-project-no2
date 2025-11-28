@@ -8,25 +8,39 @@ import { notFound } from "next/navigation";
 type Props = {
   params: {
     id: string;
+    current: string;
   };
 };
 
 export default async function Page({ params }: Props) {
-  const category = await getCategoryDetail(params.id).catch(notFound);
+  const current = parseInt(params.current, 10);
+
+  if (Number.isNaN(current) || current < 1) {
+    notFound();
+  }
+
+  const category = await getCategoryDetail(params.id);
+
   const { contents: news, totalCount } = await getNewsList({
     limit: NEWS_LIST_LIMIT,
     filters: `category[equals]${category.id}`,
-  }).catch(notFound);
-  // console.log(category)
+    offset: NEWS_LIST_LIMIT * (current - 1),
+  });
+
+  console.log("params:", params);
+  console.log("params.id:", params.id);
+  console.log("current:", current);
+  console.log("category:", category);
+
   return (
     <>
-      <Category category={category} />
-      の一覧
+      <p>
+        <Category category={category} />
+        の一覧
+      </p>
+
       <NewsList news={news} />
-      <Pagination
-        totalCount={totalCount}
-        basePath={`/news/category/${category.id}`}
-      />
+      <Pagination totalCount={totalCount} current={current} basePath={`/news/category/${category.id}`}/>
     </>
   );
 }
