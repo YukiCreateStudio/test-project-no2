@@ -50,10 +50,23 @@ export const getMembersList = async (queries?: MicroCMSQueries) => {
   return listData;
 };
 
-//Newsデータ取得//
+//News一覧データ取得//
 export const getNewsList = async (queries?: MicroCMSQueries) => {
   const listData = client.getList<News>({
     endpoint: "news",
+    queries,
+  });
+  return listData;
+};
+
+//News詳細データ取得//
+export const getNewsDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  const listData = client.getListDetail<News>({
+    endpoint: "news",
+    contentId,
     queries,
   });
   return listData;
