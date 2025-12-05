@@ -10,12 +10,12 @@ type Props = {
 };
 
 export default function Pagination({ totalCount, current = 1,basePath="/news"}: Props) {
-  console.log(totalCount);
+  // console.log(totalCount);
   const pages = Array.from(
     { length: Math.ceil(totalCount / NEWS_LIST_LIMIT) },
     (_, i) => i + 1
   );
-  console.log(pages);
+  // console.log(pages);
   return (
     <>
       <nav>
