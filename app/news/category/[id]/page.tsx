@@ -5,6 +5,8 @@ import { NEWS_LIST_LIMIT } from "@/app/_constans";
 import { getCategoryDetail, getNewsList } from "@/app/_libs/microcms";
 import { notFound } from "next/navigation";
 
+export const runtime = 'edge';
+
 type Props = {
   params: {
     id: string;

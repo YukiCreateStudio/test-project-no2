@@ -9,6 +9,8 @@ import SearchField from "@/app/_component/SearchField";
 import { NEWS_LIST_LIMIT } from "@/app/_constans";
 import { getNewsList } from "@/app/_libs/microcms";
 
+export const runtime = 'edge';
+
 // type Props = {
 //   searchParams: {
 //     q?: string;

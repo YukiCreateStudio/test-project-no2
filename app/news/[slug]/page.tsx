@@ -2,6 +2,8 @@ import Article from "@/app/_component/Article";
 import { getNewsDetail } from "@/app/_libs/microcms";
 import { notFound } from "next/navigation";
 
+export const runtime = 'edge';
+
 type Props = {
   params: {
     slug: string;
